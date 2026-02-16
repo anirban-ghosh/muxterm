@@ -1,0 +1,299 @@
+:root {
+  color-scheme: dark;
+  --bg-base: #070d12;
+  --bg-surface: #111b24;
+  --bg-surface-alt: #152536;
+  --text-main: #e8eef8;
+  --text-muted: #8fa3b8;
+  --accent: #ffd166;
+  --accent-strong: #fcbf49;
+  --danger: #ff6b6b;
+  --border: #29445b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, #163148 0%, var(--bg-base) 45%);
+  color: var(--text-main);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.runtime-error {
+  border-bottom: 1px solid #8d2a2a;
+  background: #3a1111;
+  color: #ffd5d5;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg-surface) 88%, black);
+}
+
+.toolbar-main-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar button {
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 8px;
+  background: linear-gradient(to bottom, var(--bg-surface-alt), #102032);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  border-color: var(--accent);
+}
+
+.toolbar button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-color: var(--border);
+}
+
+.tabs-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  padding: 8px;
+  background: color-mix(in oklab, var(--bg-surface) 92%, black);
+}
+
+.tab-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  min-width: 120px;
+  max-width: 280px;
+  background: #0f1822;
+}
+
+.tab-item.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-close {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tab-close:hover {
+  background: #273748;
+  color: var(--danger);
+}
+
+.workspace {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.workspace-tab {
+  position: absolute;
+  inset: 0;
+  min-width: 0;
+  min-height: 0;
+  display: none;
+}
+
+.workspace-tab.active {
+  display: flex;
+}
+
+.workspace-tab.active > * {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.empty-state,
+.pane-placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.split {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.split-horizontal {
+  flex-direction: row;
+}
+
+.split-vertical {
+  flex-direction: column;
+}
+
+.split-child {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.split-divider {
+  background: color-mix(in oklab, var(--border) 70%, #03080d);
+  flex: 0 0 auto;
+  transition: background-color 120ms ease;
+  position: relative;
+  z-index: 2;
+}
+
+.divider-horizontal {
+  width: 6px;
+  cursor: col-resize;
+}
+
+.divider-vertical {
+  height: 6px;
+  cursor: row-resize;
+}
+
+.split-divider:hover {
+  background: color-mix(in oklab, var(--accent) 70%, #1f3448);
+}
+
+.terminal-pane {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.terminal-pane.active {
+  border-color: color-mix(in oklab, var(--accent) 65%, transparent);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in oklab, black 65%, transparent);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.modal {
+  width: min(620px, 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(to bottom right, #0f1b27, #081018);
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.session-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.session-list button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #102032;
+  color: var(--text-main);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.session-list button:hover {
+  border-color: var(--accent);
+}
+
+.modal input {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #060d13;
+  color: var(--text-main);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.modal-actions button {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #112334;
+  color: var(--text-main);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.error-text {
+  color: var(--danger);
+}
+
+.muted {
+  color: var(--text-muted);
+}
