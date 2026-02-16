@@ -27,15 +27,31 @@ Cross-platform desktop terminal emulator scaffold with:
 
 ## Quick start
 
+Clone on your platform:
+
 ```bash
-npm install
-npm run dev
+# HTTPS
+git clone https://github.com/anirban-ghosh/muxterm.git
+cd muxterm
 ```
 
-Production build:
+```bash
+# SSH
+git clone git@github.com:anirban-ghosh/muxterm.git
+cd muxterm
+```
+
+Install dependencies and run (non-debug app launch, no DevTools popup):
 
 ```bash
+npm install
 npm run build
+npm start
+```
+
+Optional packaging build:
+
+```bash
 npx electron-builder
 ```
 
