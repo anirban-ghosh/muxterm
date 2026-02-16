@@ -1,4 +1,4 @@
-# PortableTerm2
+# muxterm
 
 Cross-platform desktop terminal emulator scaffold with:
 
@@ -11,6 +11,12 @@ Cross-platform desktop terminal emulator scaffold with:
   - tmux windows mapped to native tabs
   - tmux panes mapped to native split panes
   - `%output` multiplexing routed to the correct pane
+
+## Project Status
+
+- This project is experimental/MVP and heavily AI generated.
+- This project is experimental and not meant for any production environment, and should not be used for any important work.
+- This is a hobby and passion project intended for exploration and learning.
 
 ## Stack
 
@@ -55,6 +61,17 @@ npx electron-builder
 - Keyboard input in tmux panes is converted into:
   - `send-keys -t <pane> -H <hex bytes...>`
 
+## Security Notes
+
+- This app executes local shells and can execute remote commands over SSH/tmux workflows.
+- Treat all shell input and connected environments as sensitive.
+- Do not run this on systems where terminal command execution must be restricted.
+- Security hardening is incomplete and this repository should be considered research-grade software.
+
+## License
+
+MIT. See `LICENSE`.
+
 ## Architecture notes
 
 - Electron main process manages PTY lifecycle and forwards data/exit events via IPC.
@@ -63,7 +80,7 @@ npx electron-builder
 
 ## Current limitations
 
-This is a strong base implementation, not full iTerm2 parity yet. Notably missing:
+This is a strong base implementation inspired by iTerm2/tmux workflows, not full feature parity. Notably missing:
 
 - Drag-resize split dividers
 - Search, profiles, triggers, broadcast input, advanced key mapping
