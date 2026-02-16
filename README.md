@@ -80,7 +80,7 @@ MIT. See `LICENSE`.
 
 ## Current limitations
 
-This is a strong base implementation inspired by iTerm2/tmux workflows, not full feature parity. Notably missing:
+This is a strong base implementation inspired by iTerm2's Tmux Control Mode (-CC) integration, not full feature parity. Notably missing:
 
 - Drag-resize split dividers
 - Search, profiles, triggers, broadcast input, advanced key mapping
